@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="content">
+	<div class="wrap-content">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
+				<div class="wrap-col">
+				{% if pages %}
+				{% for page in pages%}
+
+					<article>
+					
+						<div class="heading">
+							<h2><a href="{% url 'page' page.title %}">{{ page.title }}</a></h2>
+						</div>
+						<div class="content">
+							<img src=" /media/{{page.picture}}" width="250px"/>
+
+							<p>{{page.context|truncatechars_html:100 | safe }}</p>
+		
+						</div>
+						<div class="info">
+							<p>{{page.time}} <a href="#">01 Commnets</a></p>
+						</div>
+						
+						{%endfor%}
+						{%endif%}
+				
+					
+				</div>
+			</div>
+{% endblock %}
