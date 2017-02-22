@@ -12,7 +12,7 @@
 					<article>
 					
 						<div class="heading">
-							<h2><a href="{% url 'page' page.title %}">{{ page.title }}</a></h2>
+							<h2><a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a></h2>
 						</div>
 						<div class="content">
 							<img src=" /media/{{page.picture}}" width="250px"/>
@@ -21,7 +21,7 @@
 		
 						</div>
 						<div class="info">
-							<p>{{page.time}} <a href="#">01 Commnets</a></p>
+							<p>{{page.time}} <br /> views:{{page.views}}</a></p>
 						</div>
 						
 						{%endfor%}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<!-- ------------Content------------- -->
+
 <section id="content">
 	<div class="wrap-content">
 		<div class="row block">
@@ -14,7 +14,7 @@
 						{% if category %}
 						{% if pages %}
 				{% for page in pages%}
-							<h3><a href="{% url 'page' page.title %}">{{ page.title }}</a></h3>
+							<h3><a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a></h3>
 				
 						<div class="content">
 							<img src=" /media/{{page.picture}}" width="50px"/>
@@ -23,7 +23,7 @@
 						</div>
 						<div class="info">
 							<p>{{page.time}}
-							<a href="{% url 'page' page.title %}">阅读全文</a></p>
+							<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文</a></p>
 
 						</div>
 <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#76D2C5 SIZE=3>

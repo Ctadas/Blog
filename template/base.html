@@ -102,7 +102,7 @@
 							{% for page in pages_view %}
 							<div class="post">
 								<img src=" /media/{{page.picture}}" width="50px" height="25px" />
-								<h4><a href="{% url 'page' page.title %}">{{page.title}}</a></h4>
+								<h4><a href="{% url 'goto' %}?page_id={{page.id}}">{{page.title}}</a></h4>
 								<p>{{page.time}}</p>
 							</div>
 							{% endfor %}
@@ -115,7 +115,7 @@
 	</div>
 </section>
 <!-- ------------Footer------------- -->
-<footer>
+<!-- <footer>
 	<div class="wrap-footer">
 		<div class="row">
 			<div class="col-1-1">
@@ -142,7 +142,7 @@
 			</div>
 			
 		</div>
-	</div>
+	</div> -->
 	<div class="copyright">
 		<p>&copy; Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 	</div>

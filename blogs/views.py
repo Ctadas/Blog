@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from blogs.models import Category,Page 
+from django.http import HttpResponseRedirect
 
 # 主页
 def index(request,context_dict):
@@ -36,6 +37,26 @@ def blog(request,context_dict):
 	context_dict['pages']=page
 
 	return render(request,'blog/blog.html',context_dict)
+
+# 访问数追踪
+def track_url(request):
+	if request.method == 'GET':
+		if 'page_id' in request.GET:
+			page_id = request.GET['page_id']
+			try:
+				page = Page.objects.get(id = page_id)
+			except Page.DoesNotExist:
+				page = None
+			if page:
+				page.views = page.views + 1
+				page.save()
+				func = 'pages'
+				name_list = page.title
+				return a(request,func,name_list)
+		else:
+			return HttpResponseRedirect('/index/')
+
+	return a(request,func,name_list)
 
 # 处理base模板显示
 def a (request,func,name_list):
