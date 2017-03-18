@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>登录界面</title>
+<!-- Custom Theme files -->
+<link href="{% static "css/style2.css"%}" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<body>
+<div class="login">
+	<h2>Acced Form</h2>
+	<div class="login-top">
+		<h1>登录界面</h1>
+		<form class="form-signin" role="form" method="post" action=".">
+		{% csrf_token %}
+			<input type="text" value="用户名" onfocus="this.value = '';" name="username" onblur="if (this.value == '') {this.value = 'User Id';}">
+			<input type="password" value="password" onfocus="this.value = '';" name="password" onblur="if (this.value == '') {this.value = 'password';}">
+	    
+	    <div class="forgot">
+    	<input type="submit" value="Login" >
+	    </div>
+	</div>
+	</form>
+	<div class="login-bottom">
+		<h3>New User &nbsp;<a href="{% url "registration_register"%}">Register</a>&nbsp Here</h3>
+	</div>
+</div>	
+
+</body>
+</html>

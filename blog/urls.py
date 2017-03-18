@@ -17,10 +17,17 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf import settings
 import django.views.static
+from django.views.generic import RedirectView
+from blogs import views
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/',include('blogs.urls')), 
+    url(r'^$',views.index,name='index2'),
+    url(r'^accounts/register/complete/$', RedirectView.as_view(url='/index/'), name='registration_register'),
+    url(r'^accounts/',include('registration.backends.simple.urls')),
  ]
 
 if settings.DEBUG:

@@ -1,33 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section id="content">
-	<div class="wrap-content">
-		<div class="row block">
-			<div id="main-content" class="col-2-3">
-				<div class="wrap-col">
-				<h1><font color="#76D2C5" face ="黑体">所有文章:</font></h1>
+{% block body %}<body class="sub-page">{% endblock %}
+<!-- Background Gradients-->
+	<div  class="site-gradients">
+		<div class="site-gradients-media">
+			<figure>
+				<img src="Another%20Yosemite%20short%20movie%20project%20%E2%80%93%20Modern_files/PcLGXNjMTdiFVKTrElCl__DSC2245.jpg" alt="PcLGXNjMTdiFVKTrElCl__DSC2245" srcset="https://themedemos.webmandesign.eu/modern/wp-content/uploads/sites/8/2014/11/PcLGXNjMTdiFVKTrElCl__DSC2245.jpg 1920w, https://themedemos.webmandesign.eu/modern/wp-content/uploads/sites/8/2014/11/PcLGXNjMTdiFVKTrElCl__DSC2245-420x280.jpg 420w, https://themedemos.webmandesign.eu/modern/wp-content/uploads/sites/8/2014/11/PcLGXNjMTdiFVKTrElCl__DSC2245-744x497.jpg 744w, https://themedemos.webmandesign.eu/modern/wp-content/uploads/sites/8/2014/11/PcLGXNjMTdiFVKTrElCl__DSC2245-1200x801.jpg 1200w" sizes="(max-width: 1617px) 100vw, 1617px" height="1080" width="1617">
+			</figure>
+		</div>
+	</div>
+	<header class="container">
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="index.html">
+					<span>Ctadas</span>
+				</a>
+			</h1>
+			<h2 class="site-description">Welcome to Us !</h2>
+		</div>
 
-					<article>
-				{% if pages %}
-				{% for page in pages%}
-							<h3><a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a></h3>
-				
-						<div class="content">
-							<img src=" /media/{{page.picture}}" width="50px"/>
-							<p>{{page.context|truncatechars_html:30 | safe }}</p>
-		
+	</header>
+	
+	<!-- /////////////////////////////////////////Content -->
+	
+		<div id="page-content">
+		<section class="box-content box-1">
+			<div class="container">
+				<div class="row">
+					
+					{% if pages %}
+					{% for page in pages %}
+					<div class="col-md-4">
+						<div class="box-item">
+							<img src=" /media/{{page.picture}}" class="img-responsive"style="width:500px;height:250px;">
+							<div class="content">
+								<h3>{{ page.title }}</h3>
+								<p>{{ page.context|truncatechars_html:30 | safe }}</p>
+								<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文..</a>
+								<br><br>
+								<span>{{ page.time }}</span><br>
+							</div>
 						</div>
-						<div class="info">
-							<p>{{page.time}} views:{{page.views}} <br /> 分类：<a href="{% url 'category' page.category.name %}">{{page.category.name }}</a><br />
-							<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文</a></p>
 
-						</div>
-<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#76D2C5 SIZE=3>
-						{%endfor%}
-						{%endif%}
-				
+					</div>
+					{% endfor %}
+					{% endif %}					
 					
 				</div>
 			</div>
+		</section>
+		</div>
+
 {% endblock %}

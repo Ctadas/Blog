@@ -1,33 +1,89 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<section id="content">
-	<div class="wrap-content">
-		<div class="row block">
-			<div id="main-content" class="col-2-3">
-				<div class="wrap-col">
-				{% if pages %}
-				{% for page in pages%}
-
-					<article>
-					
-						<div class="heading">
-							<h2><a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a></h2>
-						</div>
-						<div class="content">
-							<img src=" /media/{{page.picture}}" width="250px"/>
-
-							<p>{{page.context|truncatechars_html:100 | safe }}</p>
-		
-						</div>
-						<div class="info">
-							<p>{{page.time}} <br /> views:{{page.views}}</a></p>
-						</div>
-						
-						{%endfor%}
-						{%endif%}
-				
-					
+	<!-- CAROUSEL -->
+	<div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel" data-interval="4000">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="{% static "images/banner1.jpg" %}" alt="...">
+				<!-- Static Header -->
+				<div class="container">
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>主题</h1>
+						<hr>
+						<p>关于主题介绍</p>
+<!-- 						<a href="{% url 'about' %}" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
+					</div>
+				</div><!-- /header-text -->
 				</div>
 			</div>
+			{% if theme %}
+			{% for ti in theme %}
+			<div class="item">
+				<img src= " /media/{{ti.picture}}" alt="...">
+				<!-- Static Header -->
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>{{ ti.title }}</h1>
+						<hr>
+						<p>{{ ti.about }}</p>
+		<!-- 				<a href="{% url 'about' %}" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
+					</div>
+				</div><!-- /header-text -->
+			</div>
+			{% endfor %}
+			{% endif %}
+
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div> <!-- Carousel -->
+	
+	<header class="container">
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="{% url 'index' %}">
+					<span>Ctadas</span>
+				</a>
+			</h1>
+			<h2 class="site-description">Welcome to Us !</h2>
+		</div>
+		
+	</header>
+	
+	<!-- Content -->
+
+	<div id="page-content">
+	
+		<!-- ////////////Content Box 01 -->
+		<section class="box-content box-1">
+			<div class="container">
+				<div class="row">					
+					{% if pages %}
+					{% for page in pages %}
+					<div class="col-md-4">
+						<div class="box-item">
+							<img src=" /media/{{page.picture}}" class="img-responsive" style="width:500px;height:250px;" >
+							<div class="content">
+								<h3>{{ page.title }}</h3>
+								<p>{{ page.context|truncatechars_html:30 | safe }}</p>
+								<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文...</a>
+								<br><br>
+								<span>{{ page.time }}</span><br>
+							</div>
+						</div>
+					 </div>
+					{% endfor %}
+					{% endif %}							
+				</div>
+			</div>
+		</section>
+	</div>
 {% endblock %}
