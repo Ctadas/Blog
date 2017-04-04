@@ -11,5 +11,6 @@ urlpatterns = [
 	url(r'^goto/$',views.track_url,name='goto'),
 	url(r'^about/$',views.about,name='about'),
 	url(r'^blog/$',views.blog,name='blog'),
+	url(r'^uploadImg/$',views.uploadImg,name='uploadImg'),
 
 ]
