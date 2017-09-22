@@ -3,8 +3,8 @@ KindEditor.ready(function(K) {
 
     	uploadJson: '/index/uploadImg/',
         // 指定大小
-        width:'800px',
-        height:'200px',
+        width:'600px',
+        height:'600px',
 
     });
 });

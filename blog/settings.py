@@ -17,8 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_PATH = os.path.join(BASE_DIR,'template')
 
+STATIC_ROOT = os.path.join(BASE_DIR,'static/admin')
 STATIC_PATH = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = ( STATIC_PATH, )
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -29,14 +31,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '=15tg67#^8ac(eyl5t)cg=x#jw9goh4st5_22ljry@(gp#=i0w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.ctadas.cn','ctadas.cn','119.29.98.109']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogs',
-    'registration'
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'global_variable.settings',
             ],
         },
     },
@@ -88,8 +92,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST':'127.0.0.1',
+        'PASSWORD': '123456789',
+        'HOST':'',
         'PORT':'3306',
 
     }
@@ -124,10 +128,21 @@ TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False        
 
-USE_TZ = True
+USE_TZ = False
 
+DATETIME_FORMAT = 'Y-m-d H:i:s' 
+
+DATE_FORMAT = 'Y-m-d'
+
+SUIT_CONFIG = {  # suit页面配置
+    'ADMIN_NAME': '后台管理',  #登录界面提示
+    'LIST_PER_PAGE': 20,
+    'MENU': ({'label': u'文章管理', 'app': 'blogs', 'models': ('blogs.Category', 'blogs.Page', 'blogs.Theme')},  #每一个字典表示左侧菜单的一栏
+             # {'label': u'SQL管理', 'app': 'web_sso', 'models': ('web_sso.Sql', 'web_sso.PreSql', 'web_sso.Direction')},  # 可以是多个字典
+             ),
+    }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

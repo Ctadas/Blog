@@ -77,19 +77,26 @@
         <div class="wrap-footer">
             <div class="container">
                 <div class="row"> 
-                    <div class="col-footer col-md-6">
+                    <div class="col-footer col-md-4">
                         <h2 class="footer-title">关于我</h2>
                         <div class="textwidget">说点什么好呢？我自己也不知道</div>
                     </div> 
 
-                    <div class="col-footer col-md-6 widget_recent_entries">
+                    <div class="col-footer col-md-4 widget_recent_entries">
                         <h2 class="footer-title">以前动态</h2>
                         <ul>
                             <li><a href="#">啥子</a></li>
                             <li><a href="#">随便写咯</a></li>
                         </ul>
                     </div>
-
+                    <div class="col-footer col-md-4">
+                        <h2 class="footer-title">Tags</h2>
+                        <div class="footer-tags">
+                            {% for cat in category %}
+                            <a href="{% url 'category' cat.name %}">{{cat.name}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>                   
 
 
                 </div>
@@ -115,7 +122,7 @@
                     </div>
                     <div class="col-md-4">
                         <ul class="list-inline quicklinks">
-                            <li><a href="#">Privacy Policy</a>
+                            <li><a href="/admin">Privacy Policy</a>
                             </li>
                             <li><a href="#">Terms of Use</a>
                             </li>

@@ -6,7 +6,7 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="{% static "images/banner1.jpg" %}" alt="...">
+				<img src="{% static "images/banner1.jpg" %}" alt="...">>
 				<!-- Static Header -->
 				<div class="container">
 				<div class="header-text hidden-xs">
@@ -24,6 +24,7 @@
 			<div class="item">
 				<img src= " /media/{{ti.picture}}" alt="...">
 				<!-- Static Header -->
+                                <div class="container">
 				<div class="header-text hidden-xs">
 					<div class="col-md-12 text-center">
 						<h1>{{ ti.title }}</h1>
@@ -32,6 +33,7 @@
 		<!-- 				<a href="{% url 'about' %}" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
 					</div>
 				</div><!-- /header-text -->
+                                </div>
 			</div>
 			{% endfor %}
 			{% endif %}
@@ -76,6 +78,7 @@
 								<p>{{ page.context|truncatechars_html:30 | safe }}</p>
 								<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文...</a>
 								<br><br>
+								<span>分类：{{ page.category }}</span><br>
 								<span>{{ page.time }}</span><br>
 							</div>
 						</div>

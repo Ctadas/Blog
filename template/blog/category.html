@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% block body %}<body class="sub-page">{% endblock %}
+<!-- Background Gradients-->
+	<div  class="site-gradients">
+		<div class="site-gradients-media">
+			<figure>
+				<img src="{%static "images/banner1.jpg"%}" alt="PcLGXNjMTdiFVKTrElCl__DSC2245" srcset="{%static "images/banner1.jpg"%}" sizes="(max-width: 1617px) 100vw, 1617px" height="1080" width="1617">
+			</figure>
+		</div>
+	</div>
+	<header class="container">
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="index.html">
+					<span>Ctadas</span>
+				</a>
+			</h1>
+			<h2 class="site-description">Welcome to Us !</h2>
+		</div>
+
+	</header>
+	
+	<!-- /////////////////////////////////////////Content -->
+
+		<div id="page-content">
+		<section class="box-content box-1">
+			<div class="container">
+				<div class="row">
+					<h4 style="color: white">当前分类：{{category_list}}</h4>
+					{% if pages %}
+					{% for page in pages %}
+					<div class="col-md-4">
+						<div class="box-item">
+							<img src=" /media/{{page.picture}}" class="img-responsive"style="width:500px;height:250px;">
+							<div class="content">
+								<h3>{{ page.title }}</h3>
+								<p>{{ page.context|truncatechars_html:30 | safe }}</p>
+								<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文..</a>
+								<br><br>
+								<span>分类：{{ page.category }}</span><br>
+								<span>{{ page.time }}</span><br>
+							</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					{% endif %}					
+					
+				</div>
+			</div>
+		</section>
+		</div>
+
+{% endblock %}

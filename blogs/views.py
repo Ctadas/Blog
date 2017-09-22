@@ -13,21 +13,16 @@ def index(request):
 	context_dict['pages'] = page_list
 	theme_list = Theme.objects.all()
 	context_dict['theme'] = theme_list
-	# page_list2 = Page.objects.order_by('-time')[3:6]
-	# context_dict['pages2'] = page_list2
-	# page_list3 = Page.objects.order_by('-time')[6:9]
-	# context_dict['pages3'] = page_list3
-
 	return render(request,'blog/index.html',context_dict)
 
 # 分类页
-def category(request):
+def category(request,category_name):
 	context_dict ={}
 	try:
-		categories = Category.objects.get(name = name_list)
+		categories = Category.objects.get(name = category_name)
 		pages = Page.objects.filter(category=categories)
-		context_dict['category'] = categories
 		context_dict['pages'] = pages
+		context_dict['category_list'] = categories
 	except Category.DoesNotExist:
 		pass 
 
@@ -96,7 +91,6 @@ def save_file(path, file_name, data):	#把data保存path/file_name文件中
 @csrf_exempt
 def uploadImg(request):
 	if request.method == 'POST':
-		file_obj = open("log.txt","w+")
 		buf = request.FILES.get('imgFile',None)                                    #获取的图片文件                                          
 		file_buff = buf.read()                                                 #获取图片内容
 		time_format=str(time.strftime("%Y-%m-%d-%H%M%S",time.localtime()))     
@@ -106,20 +100,3 @@ def uploadImg(request):
 		dict_tmp['error']=0                                                     #成功{ "error":0, "url": "/static/image/filename"}
 		dict_tmp['url']="/static/images/"+file_name
 		return HttpResponse(json.dumps(dict_tmp))    
-# 处理base模板显示
-# def a (request,func,name_list):
-# 	context_dict = {}
-# 	category_list = Category.objects.all()
-# 	context_dict['categories'] = category_list
-# 	page_view = Page.objects.order_by('-views')[:5]
-# 	context_dict['pages_view'] = page_view
-# 	func_name = eval(func)  #用来计算在字符串中的有效Python表达式,并返回一个对象
-	
-# 	if func =='blog' or func =='index':
-# 		return func_name(request,context_dict)
-
-# 	else:
-# 		return func_name(request,name_list,context_dict)
-
-# def login(request):
-# 	return render(request,'blog/login.html',{})
