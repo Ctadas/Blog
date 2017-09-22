@@ -67,7 +67,7 @@
 		<!-- ////////////Content Box 01 -->
 		<section class="box-content box-1">
 			<div class="container">
-				<div class="row">					
+				<div class="row">						
 					{% if pages %}
 					{% for page in pages %}
 					<div class="col-md-4">
@@ -75,7 +75,7 @@
 							<img src=" /media/{{page.picture}}" class="img-responsive" style="width:500px;height:250px;" >
 							<div class="content">
 								<h3>{{ page.title }}</h3>
-								<p>{{ page.context|truncatechars_html:30 | safe }}</p>
+								<p>{{ page.context|truncatechars_html:40 | safe }}</p>
 								<a href="{% url 'goto' %}?page_id={{page.id}}">阅读全文...</a>
 								<br><br>
 								<span>分类：{{ page.category }}</span><br>
