@@ -70,7 +70,9 @@
 				<div class="row">						
 					{% if pages %}
 					{% for page in pages %}
+					{% if {{ forloop.counter }} == 1 or {{ forloop.counter }}%3 == 1 %}
 					<div class="col-md-4">
+					{% endif %}
 						<div class="box-item">
 							<img src=" /media/{{page.picture}}" class="img-responsive" style="width:500px;height:250px;" >
 							<div class="content">
@@ -82,7 +84,9 @@
 								<span>{{ page.time }}</span><br>
 							</div>
 						</div>
+					{% if {{ forloop.counter }} == 1 or {{ forloop.counter }}%3 == 1 %}
 					 </div>
+					 {% endif %}
 					{% endfor %}
 					{% endif %}							
 				</div>
