@@ -70,7 +70,7 @@
 				<div class="row">						
 					{% if pages %}
 					{% for page in pages %}
-					{% if forloop.counter == 1 or forloop.counter%3 == 1 %}
+					{% if forloop.counter == 1 or forloop.counter == 4 or forloop.counter == 7 %}
 					<div class="col-md-4">
 					{% endif %}
 						<div class="box-item">
@@ -84,7 +84,7 @@
 								<span>{{ page.time }}</span><br>
 							</div>
 						</div>
-					{% if forloop.counter == 1 or forloop.counter%3 == 1 %}
+					{% if forloop.counter == 1 or forloop.counter == 4 or forloop.counter == 7 %}
 					 </div>
 					 {% endif %}
 					{% endfor %}
