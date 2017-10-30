@@ -26,9 +26,11 @@
 		<section class="box-content box-1">
 			<div class="container">
 				<div class="row">
-					
 					{% if pages %}
 					{% for page in pages %}
+					{% if forloop.counter == 1 or forloop.counter == 4 or forloop.counter == 7 %}
+					<div class="col-md-12">
+					{% endif %}
 					<div class="col-md-4">
 						<div class="box-item">
 							<img src=" /media/{{page.picture}}" class="img-responsive"style="width:500px;height:250px;">
@@ -43,6 +45,9 @@
 						</div>
 
 					</div>
+					{% if forloop.counter == 1 or forloop.counter == 4 or forloop.counter == 7 %}
+					</div>
+					{% endif %}
 					{% endfor %}
 					{% endif %}					
 					
